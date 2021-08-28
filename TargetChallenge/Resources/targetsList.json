@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Challenge #1",
+        "description": "Висит груша нельзя скушать",
+        "answer": "Лампочка",
+        "guessed": true,
+        "pinned": false,
+    },
+    {
+        "id": 2,
+        "title": "Challenge #2",
+        "description": "description",
+        "answer": "Лампочка",
+        "guessed": false,
+        "pinned": false,
+    },
+    {
+        "id": 3,
+        "title": "Challenge #3",
+        "description": "description",
+        "answer": "Лампочка",
+        "guessed": false,
+        "pinned": false,
+    }
+]

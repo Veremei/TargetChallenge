@@ -10,10 +10,8 @@ import SwiftUI
 
 struct Target: Hashable, Codable, Identifiable {
     var id: Int
-    var title, description, answer: String
-    var hints: String?
-    var imageURL: String?
-    var isGuessed, isPinned: Bool
+    var title,description, answer: String
+    var guessed, pinned: Bool
 }
 
 extension Target {

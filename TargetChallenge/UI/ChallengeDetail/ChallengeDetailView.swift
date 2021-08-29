@@ -8,22 +8,12 @@
 import SwiftUI
 
 struct ChallengeDetailView: View {
-    private struct Layout {
-        static let mainStackSpacing: CGFloat = 24
-        static let mainStackHPadding: CGFloat = 32
-        static let cornerRadius: CGFloat = 6
-        static let bottomButtonHeight: CGFloat = 54
-        static let descriptionVerticalPadding: CGFloat = 24
-        static let checkButtonShadowRadius: CGFloat = 24
-    }
     
     @ObservedObject var model: ChallengeDetailViewModel
     
-    @State private var showHints = false
-    
     var body: some View {
         ScrollView {
-            VStack(spacing: Layout.mainStackSpacing) {
+            VStack(spacing: 24) {
                 Text(model.target.title)
                     .font(.title)
                     .bold()
@@ -33,56 +23,45 @@ struct ChallengeDetailView: View {
                         .bold()
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
-                        .padding()
+                        .padding(.vertical, 8)
                         .background(
-                            RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                            RoundedRectangle(cornerRadius: 6)
                                 .foregroundColor(Color(hexString: "F6F6F6"))
                         )
                 }
                 
-                Text("\(model.target.description)")
+                
+                Text("Загадка: \(model.target.description)")
                     .frame(maxWidth: .infinity)
                     .multilineTextAlignment(.center)
-                    .padding(.vertical, Layout.descriptionVerticalPadding)
+                    .padding()
                     .background(
-                        RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                        RoundedRectangle(cornerRadius: 6)
                             .foregroundColor(Color(hexString: "F6F6F6"))
                     )
                 
-                RoundedRectangle(cornerRadius: Layout.cornerRadius)
-                    .foregroundColor(Color(hexString: "ECE4E4"))
-                    .aspectRatio(1, contentMode: .fit)
+                RoundedRectangle(cornerRadius: 6)
+                    .foregroundColor(Color(hexString: "ECE4E4")).aspectRatio(1, contentMode: .fit)
                 
-                if let hints = model.target.hints {
-                    Button(action: {
-                        showHints = !showHints
-                    }) {
-                        RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                Text("😽 😽 😽")
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
                             .foregroundColor(Color(hexString: "F6F6F6"))
-                            .overlay(
-                                Text(showHints ? hints : "Подсказка")
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(.black)
-                            )
-                    }
-                    .frame(width: .infinity, height: Layout.bottomButtonHeight, alignment: .center)
-                }
+                    )
                 
                 Button(action: { }) {
-                    RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                    RoundedRectangle(cornerRadius: 6)
                         .foregroundColor(Color(hexString: "ECE4E4"))
-                        .overlay(
-                            Text("Проверить")
-                                .foregroundColor(.black)
-                        )
+                        .overlay(Text("Проверить").foregroundColor(.black))
                 }
-                .frame(width: .infinity, height: Layout.bottomButtonHeight, alignment: .center)
-                .shadow(radius: Layout.checkButtonShadowRadius)
+                .frame(width: .infinity, height: 44, alignment: .center)
                 
                 Spacer()
-            }
-            .padding(.horizontal, Layout.mainStackHPadding)
-            .padding(.vertical)
+            }.padding(.horizontal, 32)
+                .padding(.vertical)
         }
     }
 }
@@ -92,6 +71,5 @@ struct ChallengeDetailView_Previews: PreviewProvider {
         ChallengeDetailView(
             model: ChallengeDetailViewModel(target: Target.mockData[0])
         )
-            .previewDevice("iPhone 12 Pro Max")
     }
 }

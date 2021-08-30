@@ -17,6 +17,6 @@ final class ChallengeDetailCoordinator: CoordinatorProtocol {
     
     func build() -> AnyView {
         let model = ChallengeDetailViewModel(target: target)
-        return ChallengeDetailView(model: model).toAnyView()
+        return ChallengeDetailView(viewModel: model).toAnyView()
     }
 }

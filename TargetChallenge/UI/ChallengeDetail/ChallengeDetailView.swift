@@ -14,22 +14,22 @@ struct ChallengeDetailView: View {
         static let cornerRadius: CGFloat = 6
         static let bottomButtonHeight: CGFloat = 54
         static let descriptionVerticalPadding: CGFloat = 24
-        static let checkButtonShadowRadius: CGFloat = 24
+        static let checkButtonShadowRadius: CGFloat = 6
     }
     
-    @ObservedObject var model: ChallengeDetailViewModel
+    @ObservedObject var viewModel: ChallengeDetailViewModel
     
     @State private var showHints = false
     
     var body: some View {
         ScrollView {
             VStack(spacing: Layout.mainStackSpacing) {
-                Text(model.target.title)
+                Text(viewModel.target.title)
                     .font(.title)
                     .bold()
                 
-                if model.target.guessed {
-                    Text(model.target.answer)
+                if viewModel.target.isGuessed {
+                    Text(viewModel.target.answer)
                         .bold()
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
@@ -40,7 +40,7 @@ struct ChallengeDetailView: View {
                         )
                 }
                 
-                Text("\(model.target.description)")
+                Text("\(viewModel.target.description)")
                     .frame(maxWidth: .infinity)
                     .multilineTextAlignment(.center)
                     .padding(.vertical, Layout.descriptionVerticalPadding)
@@ -53,7 +53,7 @@ struct ChallengeDetailView: View {
                     .foregroundColor(Color(hexString: "ECE4E4"))
                     .aspectRatio(1, contentMode: .fit)
                 
-                if let hints = model.target.hints {
+                if let hints = viewModel.target.hints {
                     Button(action: {
                         showHints = !showHints
                     }) {
@@ -90,7 +90,7 @@ struct ChallengeDetailView: View {
 struct ChallengeDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ChallengeDetailView(
-            model: ChallengeDetailViewModel(target: Target.mockData[0])
+            viewModel: ChallengeDetailViewModel(target: Target.mockData[0])
         )
             .previewDevice("iPhone 12 Pro Max")
     }

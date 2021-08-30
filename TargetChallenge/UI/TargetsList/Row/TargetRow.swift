@@ -13,19 +13,21 @@ struct TargetRow: View {
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             Circle()
-                .frame(width: 36, height: 36)
+                .frame(width: 32, height: 32)
                 .foregroundColor(.red)
             
             Text(target.title)
                 .font(.title2)
                 .bold()
+                .foregroundColor(.black)
             
             Spacer()
         }
         .padding(.horizontal, 24)
-        .padding(.vertical, 8)
-        .background(RoundedRectangle(cornerRadius: 6)
-                        .foregroundColor(Color(hexString: "F1F2F6")).frame(height: 80)
+        .padding(.vertical, 24)
+        .background(
+            RoundedRectangle(cornerRadius: 6)
+                .foregroundColor(Color(hexString: "F1F2F6"))
         )
     }
 }

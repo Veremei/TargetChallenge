@@ -14,7 +14,7 @@ struct TargetsListView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack(spacing: 8) {
+                LazyVStack(spacing: 16) {
                     ForEach(viewModel.targets) { target in
                         NavigationLink {
                             ChallengeDetailCoordinator(target: target).build()
@@ -22,8 +22,9 @@ struct TargetsListView: View {
                             TargetRow(target: target)
                                 .padding(.horizontal)
                         }
-                    }.padding(.vertical)
-                }.padding(.top, 24)
+                    }
+                }
+                .padding(.top, 24)
             }
             
             .navigationTitle("My targets")
@@ -34,5 +35,6 @@ struct TargetsListView: View {
 struct TargetsListView_Previews: PreviewProvider {
     static var previews: some View {
         TargetsListView(viewModel: TargetsListViewModel())
+            .previewDevice("iPhone 12 Pro Max")
     }
 }

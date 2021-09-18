@@ -132,7 +132,6 @@
 		BA0C3DA226D2CF3300FB5848 /* TargetChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				BA0C3DA326D2CF3300FB5848 /* TargetChallengeApp.swift */,
 				BAECE57B26D2EA3C00BC84B5 /* Model */,
 				BA0C3DDC26D2D49800FB5848 /* UI */,
 				BA0C3DD926D2D45C00FB5848 /* Managers */,
@@ -171,6 +170,7 @@
 		BA0C3DCD26D2CF9300FB5848 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BA0C3DA326D2CF3300FB5848 /* TargetChallengeApp.swift */,
 				BA0C3DCE26D2CFA600FB5848 /* MainView.swift */,
 				BA0C3DD226D2CFBE00FB5848 /* MainViewModel.swift */,
 				BA0C3DD026D2CFB600FB5848 /* MainViewCoordinator.swift */,

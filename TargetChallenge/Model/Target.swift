@@ -11,6 +11,7 @@ import SwiftUI
 struct Target: Hashable, Codable, Identifiable {
     var id: Int
     var title, description, answer: String
+    var modelLabels: [String]
     var hints: String?
     var imageURL: String?
     var isGuessed, isPinned: Bool

@@ -14,19 +14,31 @@ struct ChallengeDetailView: View {
         static let cornerRadius: CGFloat = 6
         static let bottomButtonHeight: CGFloat = 54
         static let descriptionVerticalPadding: CGFloat = 24
-        static let checkButtonShadowRadius: CGFloat = 6
+        static let checkButtonShadowRadius: CGFloat = 1
     }
     
     @ObservedObject var viewModel: ChallengeDetailViewModel
     
     @State private var showHints = false
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var image: Image?
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     var body: some View {
         ScrollView {
             VStack(spacing: Layout.mainStackSpacing) {
-                Text(viewModel.target.title)
-                    .font(.title)
-                    .bold()
+                HStack {
+                    Text(viewModel.target.title)
+                        .font(.title)
+                        .bold()
+                    
+                    if viewModel.target.isGuessed {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                            .font(.title)
+                    }
+                }
                 
                 if viewModel.target.isGuessed {
                     Text(viewModel.target.answer)
@@ -48,50 +60,87 @@ struct ChallengeDetailView: View {
                         RoundedRectangle(cornerRadius: Layout.cornerRadius)
                             .foregroundColor(Color(hexString: "F6F6F6"))
                     )
+                    .shadow(radius: Layout.checkButtonShadowRadius)
                 
-                RoundedRectangle(cornerRadius: Layout.cornerRadius)
-                    .foregroundColor(Color(hexString: "ECE4E4"))
-                    .aspectRatio(1, contentMode: .fit)
+                
+                if let image = image {
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .onTapGesture {
+                            self.showingImagePicker = true
+                        }
+                } else if !viewModel.target.isGuessed {
+                    RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                        .foregroundColor(Color(hexString: "ECE4E4"))
+                        .aspectRatio(1, contentMode: .fit)
+                        .onTapGesture {
+                            self.showingImagePicker = true
+                        }
+                }
+                
                 
                 if let hints = viewModel.target.hints {
                     Button(action: {
-                        showHints = !showHints
+                        if !viewModel.target.isGuessed {
+                            showHints = !showHints
+                        }
                     }) {
                         RoundedRectangle(cornerRadius: Layout.cornerRadius)
                             .foregroundColor(Color(hexString: "F6F6F6"))
                             .overlay(
-                                Text(showHints ? hints : "Подсказка")
+                                Text(showHints || viewModel.target.isGuessed
+                                     ? hints
+                                     : "Подсказка")
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.black)
                             )
                     }
-                    .frame(width: .infinity, height: Layout.bottomButtonHeight, alignment: .center)
+                    .frame(height: Layout.bottomButtonHeight, alignment: .center)
+                    .disabled(viewModel.target.isGuessed)
                 }
                 
-                Button(action: { }) {
-                    RoundedRectangle(cornerRadius: Layout.cornerRadius)
-                        .foregroundColor(Color(hexString: "ECE4E4"))
-                        .overlay(
-                            Text("Проверить")
-                                .foregroundColor(.black)
-                        )
+                if !viewModel.target.isGuessed {
+                    Button(action: {
+                        if let img = inputImage {
+                            viewModel.classifyImage(img)
+                        }
+                    }) {
+                        RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                            .foregroundColor(Color(hexString: "ECE4E4"))
+                            .overlay(
+                                Text("Проверить")
+                                    .foregroundColor(.black)
+                            )
+                    }
+                    .frame( height: Layout.bottomButtonHeight, alignment: .center)
+                    .shadow(radius: Layout.checkButtonShadowRadius)
+                    .disabled(inputImage == nil || viewModel.target.isGuessed)
+                    
+                    Spacer()
                 }
-                .frame(width: .infinity, height: Layout.bottomButtonHeight, alignment: .center)
-                .shadow(radius: Layout.checkButtonShadowRadius)
-                
-                Spacer()
+            }
+            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: self.$inputImage, sourceType: $sourceType)
+                    .onDisappear {
+                        self.showingImagePicker = false
+                    }
             }
             .padding(.horizontal, Layout.mainStackHPadding)
             .padding(.vertical)
         }
     }
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
 }
 
 struct ChallengeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengeDetailView(
-            viewModel: ChallengeDetailViewModel(target: Target.mockData[0])
-        )
+        let model = ChallengeDetailViewModel(target: Target.mockData[0])
+        ChallengeDetailView(viewModel: model)
             .previewDevice("iPhone 12 Pro Max")
     }
 }

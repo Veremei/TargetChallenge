@@ -25,6 +25,8 @@
 		BA0C3DE926D2D85E00FB5848 /* TargetsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C3DE826D2D85E00FB5848 /* TargetsListCoordinator.swift */; };
 		BA13739926D8281600EFC3DA /* ChallengeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA13739826D8281600EFC3DA /* ChallengeDetailCoordinator.swift */; };
 		BA13739B26D8281F00EFC3DA /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA13739A26D8281F00EFC3DA /* ChallengeDetailViewModel.swift */; };
+		BA3689DC26E36D5B006E5E5A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3689DB26E36D5B006E5E5A /* ImagePicker.swift */; };
+		BA3689DE26E3847B006E5E5A /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BA3689DD26E3847B006E5E5A /* MobileNetV2.mlmodel */; };
 		BA8B77FC26D42A59003050AE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8B77FB26D42A59003050AE /* Color+Extension.swift */; };
 		BAC53DC126D43228004CC05C /* ChallengeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC53DC026D43228004CC05C /* ChallengeDetailView.swift */; };
 		BAECE57D26D2EA6200BC84B5 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAECE57C26D2EA6200BC84B5 /* Target.swift */; };
@@ -72,6 +74,8 @@
 		BA0C3DE826D2D85E00FB5848 /* TargetsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsListCoordinator.swift; sourceTree = "<group>"; };
 		BA13739826D8281600EFC3DA /* ChallengeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailCoordinator.swift; sourceTree = "<group>"; };
 		BA13739A26D8281F00EFC3DA /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
+		BA3689DB26E36D5B006E5E5A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BA3689DD26E3847B006E5E5A /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		BA8B77FB26D42A59003050AE /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		BAC53DC026D43228004CC05C /* ChallengeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailView.swift; sourceTree = "<group>"; };
 		BAECE57C26D2EA6200BC84B5 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 			children = (
 				BA0C3DE126D2D55000FB5848 /* ActivityIndicator */,
 				BA0C3DDE26D2D52B00FB5848 /* ViewModifiers */,
+				BA3689DB26E36D5B006E5E5A /* ImagePicker.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 		BA0C3DE226D2D59100FB5848 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA3689DD26E3847B006E5E5A /* MobileNetV2.mlmodel */,
 				BAECE58526D2F17400BC84B5 /* targetsList.json */,
 				BA0C3DA726D2CF3600FB5848 /* Assets.xcassets */,
 			);
@@ -412,6 +418,7 @@
 				BA0C3DE026D2D53C00FB5848 /* DeviceShakeViewModifier.swift in Sources */,
 				BAECE57F26D2EB1C00BC84B5 /* ModelData.swift in Sources */,
 				BAC53DC126D43228004CC05C /* ChallengeDetailView.swift in Sources */,
+				BA3689DC26E36D5B006E5E5A /* ImagePicker.swift in Sources */,
 				BA0C3DCF26D2CFA600FB5848 /* MainView.swift in Sources */,
 				BA0C3DD826D2D42600FB5848 /* ActivityIndicator.swift in Sources */,
 				BA13739B26D8281F00EFC3DA /* ChallengeDetailViewModel.swift in Sources */,
@@ -422,6 +429,7 @@
 				BA0C3DA426D2CF3300FB5848 /* TargetChallengeApp.swift in Sources */,
 				BA0C3DDB26D2D46D00FB5848 /* BaseCoordinator.swift in Sources */,
 				BA0C3DE726D2D85500FB5848 /* TargetsListViewModel.swift in Sources */,
+				BA3689DE26E3847B006E5E5A /* MobileNetV2.mlmodel in Sources */,
 				BAECE58426D2F04700BC84B5 /* TargetRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,12 +594,13 @@
 				DEVELOPMENT_TEAM = 7698ZCX9PF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,12 +625,13 @@
 				DEVELOPMENT_TEAM = 7698ZCX9PF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

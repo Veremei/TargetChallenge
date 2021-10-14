@@ -10,7 +10,7 @@ import SwiftUI
 struct TargetsListView: View {
     
     @ObservedObject var viewModel: TargetsListViewModel
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -27,7 +27,7 @@ struct TargetsListView: View {
                 .padding(.top, 24)
             }
             
-            .navigationTitle("My targets")
+            .navigationTitle(Text("My targets", comment: "Targets List navigation title"))
         }
     }
 }

@@ -35,7 +35,7 @@ class ChallengeDetailViewModel: ObservableObject {
         }
     }()
     
-    init(target: Target = Target.mockData[0]) {
+    init(target: Target = Target.previewData[0]) {
         self.target = target
     }
     

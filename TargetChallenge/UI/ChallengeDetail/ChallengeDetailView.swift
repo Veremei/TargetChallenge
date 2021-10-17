@@ -139,7 +139,7 @@ struct ChallengeDetailView: View {
 
 struct ChallengeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let model = ChallengeDetailViewModel(target: Target.mockData[0])
+        let model = ChallengeDetailViewModel()
         ChallengeDetailView(viewModel: model)
             .previewDevice("iPhone 12 Pro Max")
     }

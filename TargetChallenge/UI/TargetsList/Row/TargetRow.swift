@@ -25,15 +25,15 @@ struct TargetRow: View {
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 24)
-        .background(
-            RoundedRectangle(cornerRadius: 6)
-                .foregroundColor(Color(hexString: "F1F2F6"))
-        )
+//        .background(
+//            RoundedRectangle(cornerRadius: 6)
+//                .foregroundColor(Color(hexString: "F1F2F6"))
+//        )
     }
 }
 
 struct TargetRow_Previews: PreviewProvider {
     static var previews: some View {
-        TargetRow(target: Target.mockData[0])
+        TargetRow(target: Target.previewData[0])
     }
 }

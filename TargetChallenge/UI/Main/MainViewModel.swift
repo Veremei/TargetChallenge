@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+enum MainViewModelAction {
+    case list
+}
+
+typealias MainViewModelCallback = (MainViewModelAction) -> AnyView
+
 class MainViewModel: ObservableObject {
     
+    private let callback: MainViewModelCallback
+    
+    init(callback: @escaping MainViewModelCallback) {
+        self.callback = callback
+    }
+    
+    func buildList() -> AnyView {
+        callback(.list)
+    }
 }

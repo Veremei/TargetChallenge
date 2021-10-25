@@ -58,6 +58,11 @@ struct TargetsListView: View {
                     }
                 }
                 .tint(.blue)
+                Button {
+                    // share item
+                } label: {
+                        Label("Share", systemImage: "arrowshape.turn.up.left")
+                }
             }
         }
     }
@@ -73,8 +78,6 @@ struct TargetsListView: View {
             }
         }
     }
-    
-    
 }
 
 struct TargetsListView_Previews: PreviewProvider {

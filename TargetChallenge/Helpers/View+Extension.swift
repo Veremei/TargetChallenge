@@ -15,7 +15,7 @@ extension View {
     func toAnyView() -> AnyView {
         AnyView(self)
     }
-
+    
     @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
         if hidden {
             if !remove {
@@ -25,10 +25,13 @@ extension View {
             self
         }
     }
-
+    
+#if canImport(UIKit)
     func onShake(perform action: @escaping () -> Void) -> some View {
         self.modifier(DeviceShakeViewModifier(action: action))
     }
+#endif
+    
 }
 
 extension View {

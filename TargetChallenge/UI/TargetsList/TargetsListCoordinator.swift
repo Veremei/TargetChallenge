@@ -13,4 +13,8 @@ final class TargetsListCoordinator: CoordinatorProtocol {
         let model = TargetsListViewModel()
         return TargetsListView(viewModel: model).toAnyView()
     }
+    
+    func buildDetails(for target: Target) -> AnyView {
+        ChallengeDetailCoordinator(target: target).build()
+    }
 }

@@ -16,24 +16,37 @@ struct TargetsListView: View {
     var body: some View {
         NavigationView {
             List {
-                if viewModel.filterText.isEmpty {
-                    if !viewModel.targets.pinned.isEmpty {
-                        Section("Pinned") {
-                            sectionContent(for: $viewModel.targets.pinned)
-                        }
-                    }
-                    
-                    Section {
-                        sectionContent(for: $viewModel.targets.unpinned)
-                    }
-                    
-                } else {
-                    sectionContent(for: $viewModel.filtered)
-                }
+                content
             }
             .listStyle(.sidebar)
+#if os(iOS)
             .searchable(text: $viewModel.filterText)
+#endif
             .navigationTitle(Text("My targets", comment: "Targets List navigation title"))
+        }
+    }
+    
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.filterText.isEmpty {
+            if !viewModel.targets.pinned.isEmpty {
+                if #available(macOS 12.0, *) {
+                    Section("Pinned") {
+                        sectionContent(for: $viewModel.targets.pinned)
+                    }
+                } else {
+                    Section {
+                        sectionContent(for: $viewModel.targets.pinned)
+                    }
+                }
+            }
+            
+            Section {
+                sectionContent(for: $viewModel.targets.unpinned)
+            }
+            
+        } else {
+            sectionContent(for: $viewModel.filtered)
         }
     }
     
@@ -45,6 +58,7 @@ struct TargetsListView: View {
             } label: {
                 TargetRow(target: target)
             }
+#if os(iOS)
             .swipeActions(edge: .trailing) {
                 Button {
                     withAnimation {
@@ -61,9 +75,12 @@ struct TargetsListView: View {
                 Button {
                     // share item
                 } label: {
-                        Label("Share", systemImage: "arrowshape.turn.up.left")
+                    Label("Share", systemImage: "arrowshape.turn.up.left")
                 }
             }
+#elseif os(macOS)
+            // add
+#endif
         }
     }
     

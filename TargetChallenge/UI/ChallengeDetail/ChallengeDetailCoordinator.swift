@@ -16,7 +16,11 @@ final class ChallengeDetailCoordinator: CoordinatorProtocol {
     }
     
     func build() -> AnyView {
+        #if os(iOS)
         let model = ChallengeDetailViewModel(target: target)
         return ChallengeDetailView(viewModel: model).toAnyView()
+        #else
+        return EmptyView().toAnyView()
+        #endif
     }
 }

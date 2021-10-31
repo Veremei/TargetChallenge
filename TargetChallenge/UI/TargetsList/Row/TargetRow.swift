@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct TargetRow: View {
+    private struct Layout {
+        static let stackSpacing: CGFloat = 16
+        static let stackPadding: CGFloat = 8
+        static let circleSize = CGSize(width: 32, height: 32)
+    }
+    
     var target: Target
     
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
+        HStack(alignment: .center, spacing: Layout.stackSpacing) {
             Circle()
-                .frame(width: 32, height: 32)
+                .frame(size: Layout.circleSize)
                 .foregroundColor(.red)
             
             Text(target.title)
@@ -23,12 +29,7 @@ struct TargetRow: View {
             
             Spacer()
         }
-        .padding(.horizontal, 24)
-        .padding(.vertical, 24)
-//        .background(
-//            RoundedRectangle(cornerRadius: 6)
-//                .foregroundColor(Color(hexString: "F1F2F6"))
-//        )
+        .padding(.all, Layout.stackPadding)
     }
 }
 

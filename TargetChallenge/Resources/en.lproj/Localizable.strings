@@ -5,3 +5,9 @@
   Created by Daniil Veramei on 26.09.2021.
   
 */
+
+"targets_list_navigation_title" = "My targets";
+"targets_list_section_pinned" = "Pinned";
+
+"target_details_hint" = "Hint";
+"target_details_button_check" = "Check";

@@ -30,6 +30,7 @@
 		BA666408272D60D20042C8F3 /* ChallengeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA13739826D8281600EFC3DA /* ChallengeDetailCoordinator.swift */; };
 		BA666409272D61CA0042C8F3 /* TargetsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C3DE426D2D80D00FB5848 /* TargetsListView.swift */; };
 		BA67B15B27177D870012EF7B /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BA67B15D27177D870012EF7B /* Localizable.stringsdict */; };
+		BA6CBC01272F37F300F4F993 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6CBC00272F37F300F4F993 /* String+Extension.swift */; };
 		BA72370B2700C06C0022F490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA72370D2700C06C0022F490 /* Localizable.strings */; };
 		BA8B77FC26D42A59003050AE /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8B77FB26D42A59003050AE /* Color+Extension.swift */; };
 		BAAE4C63272742D6007671A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE4C62272742D6007671A7 /* ContentView.swift */; };
@@ -118,6 +119,7 @@
 		BA3689DD26E3847B006E5E5A /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		BA67B15C27177D870012EF7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		BA67B15E27177D8B0012EF7B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		BA6CBC00272F37F300F4F993 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BA72370C2700C06C0022F490 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA8B77FB26D42A59003050AE /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		BA90C1B32700C34500D704FA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				BA0C3DD526D2D2D000FB5848 /* View+Extension.swift */,
 				BA8B77FB26D42A59003050AE /* Color+Extension.swift */,
+				BA6CBC00272F37F300F4F993 /* String+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA0C3DD326D2CFBE00FB5848 /* MainViewModel.swift in Sources */,
+				BA6CBC01272F37F300F4F993 /* String+Extension.swift in Sources */,
 				BA8B77FC26D42A59003050AE /* Color+Extension.swift in Sources */,
 				BA0C3DD126D2CFB600FB5848 /* MainViewCoordinator.swift in Sources */,
 				BA13739926D8281600EFC3DA /* ChallengeDetailCoordinator.swift in Sources */,

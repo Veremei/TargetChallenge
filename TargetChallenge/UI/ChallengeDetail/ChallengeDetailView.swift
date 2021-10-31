@@ -91,7 +91,7 @@ struct ChallengeDetailView: View {
                             .overlay(
                                 Text(showHints || viewModel.target.isGuessed
                                      ? hints
-                                     : "Подсказка")
+                                     : "target_details_hint".localized)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.black)
                             )
@@ -109,7 +109,7 @@ struct ChallengeDetailView: View {
                         RoundedRectangle(cornerRadius: Layout.cornerRadius)
                             .foregroundColor(Color(hexString: "ECE4E4"))
                             .overlay(
-                                Text("Проверить")
+                                Text("target_details_button_check", comment: "Bottom button to check photo")
                                     .foregroundColor(.black)
                             )
                     }

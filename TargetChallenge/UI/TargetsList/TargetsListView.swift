@@ -22,7 +22,7 @@ struct TargetsListView: View {
 #if os(iOS)
             .searchable(text: $viewModel.filterText)
 #endif
-            .navigationTitle(Text("My targets", comment: "Targets List navigation title"))
+            .navigationTitle(Text("targets_list_navigation_title", comment: "Targets list navigation title"))
         }
     }
     
@@ -31,7 +31,7 @@ struct TargetsListView: View {
         if viewModel.filterText.isEmpty {
             if !viewModel.targets.pinned.isEmpty {
                 if #available(macOS 12.0, *) {
-                    Section("Pinned") {
+                    Section(header: Text("targets_list_section_pinned", comment: "Targets list pinned section header")) {
                         sectionContent(for: $viewModel.targets.pinned)
                     }
                 } else {
@@ -59,24 +59,27 @@ struct TargetsListView: View {
                 TargetRow(target: target)
             }
 #if os(iOS)
-            .swipeActions(edge: .trailing) {
+            .swipeActions(edge: .leading) {
                 Button {
                     withAnimation {
                         target.isPinned.toggle()
                     }
                 } label: {
                     if target.isPinned {
-                        Label("Unpin", systemImage: "pin.slash")
+                        Image(systemName: "pin.slash")
                     } else {
-                        Label("Pin", systemImage: "pin")
+                        Image(systemName: "pin")
                     }
                 }
-                .tint(.blue)
+                .tint(.yellow)
+            }
+            .swipeActions(edge: .trailing) {
                 Button {
                     // share item
                 } label: {
-                    Label("Share", systemImage: "arrowshape.turn.up.left")
+                    Image(systemName: "arrowshape.turn.up.left")
                 }
+                .tint(.blue)
             }
 #elseif os(macOS)
             // add
